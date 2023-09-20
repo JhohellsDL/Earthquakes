@@ -3,8 +3,7 @@ package com.example.earthquakes.overview
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.earthquakes.network.Earthquake
-import com.example.earthquakes.network.EarthquakeApiService
+import com.example.earthquakes.network.EarthquakeService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -26,7 +25,7 @@ class OverviewViewModel : ViewModel() {
     private fun getMarsRealEstateProperties() {
         coroutineScope.launch {
 
-            val getPropertiesDeferred = EarthquakeApiService.retrofitService.getEarthquakes()
+            val getPropertiesDeferred = EarthquakeService.retrofitService.getEarthquakes()
 
             try {
                 val result = getPropertiesDeferred.await()

@@ -18,7 +18,7 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-object EarthquakeApiService {
+object EarthquakeService {
     val retrofitService : EarthquakeApi by lazy {
         retrofit.create(EarthquakeApi::class.java)
     }
