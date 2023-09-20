@@ -29,7 +29,7 @@ class OverviewViewModel : ViewModel() {
 
             try {
                 val result = getPropertiesDeferred.await()
-                _status.value = "Llamada exitosa : $result"
+                _status.value = "Llamada exitosa : ${result.features.size}"
             } catch (e: Exception) {
                 _status.value = "Llamada fallida : " + e.message
             }
