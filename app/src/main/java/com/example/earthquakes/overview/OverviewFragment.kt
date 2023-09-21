@@ -1,6 +1,7 @@
 package com.example.earthquakes.overview
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,18 @@ class OverviewFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        val adapter = OverviewListAdapter(
+            onClickListener = {
+                Log.d("asdasd", "earthquake: ${it.properties.place}")
+            }
+        )
 
+        binding.earthquakeRecyclerView.adapter = adapter
+
+        viewModel.listEarthquakeFeatures.observe(viewLifecycleOwner){
+            Log.d("asdasd", "viewmodelasdfasd: ${it[0].properties}")
+            adapter.data = it!!
+        }
 
         return binding.root
     }
